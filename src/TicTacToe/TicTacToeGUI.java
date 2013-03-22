@@ -19,7 +19,7 @@ import java.util.Scanner;
  *
  * Created on Jan 30, 2012, 9:40:03 AM
  * A Tic Tac Toe Game
- * For 1 or 2 Players
+ * For 1 or 2 Players 
  * 1 Player uses AIplayer class to create a move
  * Includes Game Counting and New Game functions
  * Also requires XComponent.java and CircleComponent.java to draw Xs and Os on the board. 
