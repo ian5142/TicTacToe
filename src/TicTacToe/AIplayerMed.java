@@ -24,7 +24,7 @@ public class AIplayerMed {
      * params are all board positions, left-right, top-down
      * @param a
      * @param b
-     * @param c
+     * @param c 
      * @param d
      * @param e
      * @param f
