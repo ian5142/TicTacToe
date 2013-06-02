@@ -1901,7 +1901,7 @@ public class TicTacToeGUI extends javax.swing.JFrame {
                     String line = in.nextLine();
                     index2 ++;
                     System.out.println("index2: " + index2);
-                    try (Scanner lineScanner = new Scanner(line)) {
+                    try (Scanner lineScanner = new Scanner(line).useDelimiter(" ");) {
                         ArrayList<String> array = new ArrayList<>();
                         while (lineScanner.hasNext()) {
                             array.add(lineScanner.next());
