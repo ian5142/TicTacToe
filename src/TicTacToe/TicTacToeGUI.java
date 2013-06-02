@@ -1908,15 +1908,15 @@ public class TicTacToeGUI extends javax.swing.JFrame {
                 if (in.ioException() != null) {  
                 }
             }
+            int lineNumber = 0;
             int size = data.size();
-            int line = 0;
             while(size > 0) {
-                if (data.get(line).get(0).equalsIgnoreCase(p1)) {
-                    data.get(line).set(1,winP1 + "");
-                    data.get(line).add(2,winP2 + "");
-                    data.get(line).add(3,gameCount + "");
+                if (data.get(lineNumber).get(0).equalsIgnoreCase(p1)) {
+                    data.get(lineNumber).set(1,winP1 + "");
+                    data.get(lineNumber).add(2,winP2 + "");
+                    data.get(lineNumber).add(3,gameCount + "");
                 }
-                line ++;
+                lineNumber ++;
                 size --;
             }
             
