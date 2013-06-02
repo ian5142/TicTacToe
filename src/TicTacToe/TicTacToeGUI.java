@@ -1892,15 +1892,21 @@ public class TicTacToeGUI extends javax.swing.JFrame {
     }
     
     private void WriteUserStats () {
+        int index2 = 0;
+        int index3 = 0;
         try {
             List<List<String>> data = new ArrayList<>(); 
             try (Scanner in = new Scanner(new FileReader("users.txt"))) {
                 while (in.hasNextLine()) {
                     String line = in.nextLine();
+                    index2 ++;
+                    System.out.println("index2: " + index2);
                     try (Scanner lineScanner = new Scanner(line)) {
                         ArrayList<String> array = new ArrayList<>();
                         while (lineScanner.hasNext()) {
                             array.add(lineScanner.next());
+                            index3 ++;
+                            System.out.println("index3: " + index3);
                         }
                         data.add(array);
                     }
@@ -1918,6 +1924,7 @@ public class TicTacToeGUI extends javax.swing.JFrame {
                 }
                 lineNumber ++;
                 size --;
+                System.out.println(lineNumber + " " + size);
             }
             
 //            String str = data.get(0).get(0) + " " + data.get(0).get(1);
