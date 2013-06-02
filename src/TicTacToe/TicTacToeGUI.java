@@ -1893,25 +1893,21 @@ public class TicTacToeGUI extends javax.swing.JFrame {
     
     private void WriteUserStats () {
         try {
-            List<List<String>> data = new ArrayList<List<String>>(); 
-            
-            Scanner in = new Scanner(new FileReader("users.txt"));
-            
-            while (in.hasNextLine()) {
-                String line = in.nextLine();
-                Scanner lineScanner = new Scanner(line);
-                ArrayList<String> array = new ArrayList<String>();
-                while (lineScanner.hasNext()) {
-                    array.add(lineScanner.next());
+            List<List<String>> data = new ArrayList<>(); 
+            try (Scanner in = new Scanner(new FileReader("users.txt"))) {
+                while (in.hasNextLine()) {
+                    String line = in.nextLine();
+                    try (Scanner lineScanner = new Scanner(line)) {
+                        ArrayList<String> array = new ArrayList<>();
+                        while (lineScanner.hasNext()) {
+                            array.add(lineScanner.next());
+                        }
+                        data.add(array);
+                    }
                 }
-                data.add(array);
-                lineScanner.close();
+                if (in.ioException() != null) {  
+                }
             }
-            if (in.ioException() != null) {  
-                // log, or rethrow - but do *something* here!  
-                in.ioException().printStackTrace();  
-            }
-            in.close();
             int size = data.size();
             int line = 0;
             while(size > 0) {
@@ -1941,7 +1937,7 @@ public class TicTacToeGUI extends javax.swing.JFrame {
             File users = new File ("users.txt");
             
             try {
-                bf = new BufferedWriter (new FileWriter(temp));
+                bf = new BufferedWriter (new FileWriter(temp, false));
             } catch (IOException ex) {
                 Logger.getLogger(TicTacToeGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
