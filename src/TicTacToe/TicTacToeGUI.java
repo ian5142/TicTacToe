@@ -1892,21 +1892,16 @@ public class TicTacToeGUI extends javax.swing.JFrame {
     }
     
     private void WriteUserStats () {
-        int index2 = 0;
-        int index3 = 0;
+        boolean found = false;
         try {
             List<List<String>> data = new ArrayList<>(); 
             try (Scanner in = new Scanner(new FileReader("users.txt"))) {
                 while (in.hasNextLine()) {
                     String line = in.nextLine();
-                    index2 ++;
-                    System.out.println("index2: " + index2);
                     try (Scanner lineScanner = new Scanner(line).useDelimiter(" ");) {
                         ArrayList<String> array = new ArrayList<>();
                         while (lineScanner.hasNext()) {
                             array.add(lineScanner.next());
-                            index3 ++;
-                            System.out.println("index3: " + index3);
                         }
                         data.add(array);
                     }
@@ -1918,28 +1913,26 @@ public class TicTacToeGUI extends javax.swing.JFrame {
             int size = data.size();
             while(size > 0) {
                 if (data.get(lineNumber).get(0).equalsIgnoreCase(p1)) {
-                    data.get(lineNumber).set(1,winP1 + "");
+                    data.get(lineNumber).add(1,winP1 + "");
                     data.get(lineNumber).add(2,winP2 + "");
                     data.get(lineNumber).add(3,gameCount + "");
+                    found = true;
                 }
                 lineNumber ++;
                 size --;
-                System.out.println(lineNumber + " " + size);
             }
             
-//            String str = data.get(0).get(0) + " " + data.get(0).get(1);
-//            System.out.println(str);
-//            str = data.get(1).get(0) + " " + data.get(1).get(1) + " " + data.get(1).get(2) + " " + data.get(1).get(3);
-//            System.out.println(str);
-//            str = data.get(2).get(0) + " " + data.get(2).get(1) + " " + data.get(2).get(2) + " " + data.get(2).get(3);
-//            System.out.println(str);
-//            str = data.get(3).get(0) + " " + data.get(3).get(1) + " " + data.get(3).get(2) + " " + data.get(3).get(3);
-//            System.out.println(str);
-//            str = data.get(4).get(0) + " " + data.get(4).get(1) + " " + data.get(4).get(2) + " " + data.get(4).get(3);
-//            System.out.println(str);
+            if (found == false) {
+                ArrayList<String> array = new ArrayList<>();
+                boolean b = data.add(array);
+                lineNumber ++;
+                data.get(lineNumber).add(0, p1 + "");
+                data.get(lineNumber).add(1,winP1 + "");
+                data.get(lineNumber).add(2,winP2 + "");
+                data.get(lineNumber).add(3,gameCount + "");
+            }
             
             BufferedWriter bf = null;
-            
             File temp = new File ("temp.txt");
             File users = new File ("users.txt");
             
