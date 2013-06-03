@@ -1925,7 +1925,6 @@ public class TicTacToeGUI extends javax.swing.JFrame {
             if (found == false) {
                 ArrayList<String> array = new ArrayList<>();
                 boolean b = data.add(array);
-                lineNumber ++;
                 data.get(lineNumber).add(0, p1 + "");
                 data.get(lineNumber).add(1,winP1 + "");
                 data.get(lineNumber).add(2,winP2 + "");
