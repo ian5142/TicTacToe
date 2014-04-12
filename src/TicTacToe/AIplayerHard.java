@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package TicTacToe;
 
 import java.sql.Timestamp;
@@ -16,51 +12,69 @@ import java.util.Comparator;
  */
 public class AIplayerHard {
 
-    String turn = "";
-    int turn2;
+    private String turn = "";
+    private int turn2;
 
-    char a1;
-    char a2;
-    char a3;
+    private char a1;
+    private char a2;
+    private char a3;
 
-    char b1;
-    char b2;
-    char b3;
+    private char b1;
+    private char b2;
+    private char b3;
 
-    char c1;
-    char c2;
-    char c3;
+    private char c1;
+    private char c2;
+    private char c3;
 
-    Timestamp timea1 = new Timestamp(0);
-    Timestamp timea2 = new Timestamp(0);
-    Timestamp timea3 = new Timestamp(0);
+    private Timestamp timea1 = new Timestamp(0);
+    private Timestamp timea2 = new Timestamp(0);
+    private Timestamp timea3 = new Timestamp(0);
 
-    Timestamp timeb1 = new Timestamp(0);
-    Timestamp timeb2 = new Timestamp(0);
-    Timestamp timeb3 = new Timestamp(0);
+    private Timestamp timeb1 = new Timestamp(0);
+    private Timestamp timeb2 = new Timestamp(0);
+    private Timestamp timeb3 = new Timestamp(0);
 
-    Timestamp timec1 = new Timestamp(0);
-    Timestamp timec2 = new Timestamp(0);
-    Timestamp timec3 = new Timestamp(0);
-    Timestamp time0 = new Timestamp(0);
+    private Timestamp timec1 = new Timestamp(0);
+    private Timestamp timec2 = new Timestamp(0);
+    private Timestamp timec3 = new Timestamp(0);
+    private Timestamp time0 = new Timestamp(0);
 
-    int indexA1;
-    int indexA2;
-    int indexA3;
-    int indexB1;
-    int indexB2;
-    int indexB3;
-    int indexC1;
-    int indexC2;
-    int indexC3;
+    private int indexA1;
+    private int indexA2;
+    private int indexA3;
+    private int indexB1;
+    private int indexB2;
+    private int indexB3;
+    private int indexC1;
+    private int indexC2;
+    private int indexC3;
 
-    int size;
+    private int size;
 
-    ArrayList list = new ArrayList();
+    private ArrayList list = new ArrayList();
 
     /**
      * Creates an AIplayer object assigning a number to each board position
      *
+     * @param a The character in position A1
+     * @param b The character in position A2
+     * @param c The character in position A3
+     * @param d The character in position B1
+     * @param e The character in position B2
+     * @param f The character in position B3
+     * @param g The character in position C1
+     * @param h The character in position C2
+     * @param i The character in position C3
+     * @param time1 The time the char was drawn on the panel A1
+     * @param time2 The time the char was drawn on the panel A2
+     * @param time3 The time the char was drawn on the panel A3
+     * @param time4 The time the char was drawn on the panel B1
+     * @param time5 The time the char was drawn on the panel B2
+     * @param time6 The time the char was drawn on the panel B3
+     * @param time7 The time the char was drawn on the panel C1
+     * @param time8 The time the char was drawn on the panel C2
+     * @param time9 The time the char was drawn on the panel C3
      */
     public AIplayerHard(char a, char b, char c, char d, char e, char f, char g, char h, char i,
             Timestamp time1, Timestamp time2, Timestamp time3, Timestamp time4, Timestamp time5,
@@ -102,7 +116,12 @@ public class AIplayerHard {
         size = 0;
     }
 
-    public String BestMove() {
+    /**
+     * Finds the best move for the computer player.
+     *
+     * @return Return the best move as a String corresponding to the panel
+     */
+    public String bestMove() {
         Order();
 
         if (indexA1 == 0 && a1 == 'X') { // If first move is A1
